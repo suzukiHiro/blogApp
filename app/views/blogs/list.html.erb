@@ -5,13 +5,14 @@
   <%= @blog.title %>
 </p>
 
-
 <ul>
 <% @blog.entries.each do |entry| %>
 	<li><%= entry.title %></li>
 	<ul>
 	<% entry.comments.each do |comment| %>
-		<li><%= comment.body %></li>
+		<% if comment.status == "approved" %>
+			<li><%= comment.body %></li>
+		<% end %>
 	<% end %>
 	</ul>
 <% end %>
