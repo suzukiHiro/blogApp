@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root :to => 'blogs#index'
+
   resources :comments, :only => [:create, :destroy] do
     member do
       get :approve
