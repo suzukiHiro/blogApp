@@ -8,7 +8,38 @@
 </head>
 <body>
 
-<%= yield %>
+<header class="header">
+	<div class="wrap">
+		<h1 class="site-title">BlogSystem@wms</h1>
+	</div>
+</header>
+
+<nav class="nav">
+	<div class="wrap">
+		<ul class="list">
+			<li>Blog System</li>
+			<li>Coming Soon</li>
+			<li>Coming Soon</li>
+			<li>Coming Soon</li>
+		</ul>
+	</div>
+</nav>
+
+<div class="wrap clearfix wrap-main">
+	<div class="main">
+		<%= yield %>
+	</div>
+
+	<aside class="sidearea">
+		<div class="ad-box" style="background-image: url('http://goo.gl/MSBV5y');"></div>
+		<div class="ad-box" style="background-image: url('http://goo.gl/VCbQEG');"></div>
+		<div class="ad-box" style="background-image: url('http://goo.gl/ER6F6B');"></div>
+	</aside>
+</div>
+
+<footer class="footer">
+	
+</footer>
 
 </body>
 </html>

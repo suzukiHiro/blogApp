@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140803045101) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
-    t.string   "status"
+    t.string   "status",     default: "unapproved"
     t.integer  "entry_id"
     t.datetime "created_at"
     t.datetime "updated_at"
