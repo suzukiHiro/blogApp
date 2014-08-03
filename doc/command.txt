@@ -1,0 +1,15 @@
+■ コマンドメモ
+
+◯ データベース作成
+rake db:create
+
+◯ Scaffold
+rails generate scaffold blog title:string
+rails generate scaffold entry title:string body:text blog_id:integer
+rails generate scaffold comment body:text status:string entry_id:integer
+
+◯ Migration
+rake db:migrate
+
+◯ Load Fixture
+rake db:fixtures:load
