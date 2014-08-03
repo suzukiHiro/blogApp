@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :comments, :except => :update do
+    member do
+      get :approve
+    end
+  end
 
-  resources :entries
+  # resources :entries
 
-  resources :blogs
+  resources :blogs do
+    resources :entries
+  end
+
 
   match ':controller(/:action(/:id))', via: [:get, :post, :patch ]
 

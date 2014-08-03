@@ -5,7 +5,27 @@
   <%= @blog.title %>
 </p>
 
-
-
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
+
+<hr>
+<h2>List Entries</h2>
+<table class="table">
+	<tr>
+		<th>Title</th>
+		<th>Body</th>
+		<th colspan="3"></th>
+	</tr>
+	<% @blog.entries.each do |entry| %>
+		<tr>
+			<td><%= entry.title %></td>
+			<td><%= entry.body %></td>
+			<td><%= link_to 'show', blog_entry_path(@blog.id, entry.id) %></td>
+			<td><%= link_to 'edit', edit_blog_entry_path(@blog.id, entry.id) %></td>
+			<td>destroy</td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Make Entry', new_blog_entry_path(@blog.id) %>
+<%= link_to 'List Blogs', blogs_path %>

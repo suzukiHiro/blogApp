@@ -12,6 +12,11 @@ class CommentsController < ApplicationController
   def show
   end
 
+  def approve
+    cnt = Comment.where(id: params[:id]).update_all(status: "approved")
+    redirect_to( :back )
+  end
+
   # GET /comments/new
   def new
     @comment = Comment.new
@@ -28,7 +33,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to blog_entry_path(@comment.entry.blog_id, @comment.entry_id), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -56,7 +61,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to blog_entry_path(@comment.entry.blog_id, @comment.entry_id), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

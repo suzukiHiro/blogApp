@@ -10,11 +10,15 @@ class EntriesController < ApplicationController
   # GET /entries/1
   # GET /entries/1.json
   def show
+    @comment = Comment.new
+    @comment.entry = @entry
   end
 
   # GET /entries/new
   def new
+    blog = Blog.find(params[:blog_id])
     @entry = Entry.new
+    @entry.blog = blog
   end
 
   # GET /entries/1/edit
@@ -28,7 +32,7 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        format.html { redirect_to blog_entry_path(@entry.blog_id, @entry.id), notice: 'Entry was successfully created.' }
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new }

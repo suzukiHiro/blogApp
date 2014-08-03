@@ -1,3 +1,5 @@
+<h2><%= @entry.blog.title %></h2>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,5 +17,54 @@
   <%= @entry.blog_id %>
 </p>
 
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>
+<%= link_to 'Edit', edit_blog_entry_path(@entry.blog.id, @entry) %> |
+<%= link_to 'Back', blog_path(@entry.blog_id) %>
+
+
+<hr>
+<h3>Listing Comments</h3>
+<table class="table">
+	<tr>
+		<th>Body</th>
+		<th colspan="2"></th>
+	</tr>
+	<% @entry.comments.each do |comment| %>
+	<tr>
+		<% if comment.status == "approved" %>
+			<td><%= comment.body %></td>
+			<td></td>
+		<% else %>
+			<td>（承認待ち）</td>
+			<td><%= link_to 'approve', approve_comment_path(comment.id) %></td>
+		<% end %>
+		<td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+	<% end %>
+</table>
+
+
+<h3>New Comment</h3>
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.hidden_field :status, :value => "unapproved" %>
+  <%= f.hidden_field :entry_id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
