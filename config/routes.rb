@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
-  resources :comments, :except => :update do
+
+  resources :comments, :only => [:create, :destroy] do
     member do
       get :approve
     end
   end
 
-  # resources :entries
-
   resources :blogs do
-    resources :entries
+    resources :entries, :except => [:index]
   end
-
-
-  match ':controller(/:action(/:id))', via: [:get, :post, :patch ]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

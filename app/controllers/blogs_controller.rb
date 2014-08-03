@@ -12,10 +12,6 @@ class BlogsController < ApplicationController
   def show
   end
 
-  def list
-    @blog = Blog.find(params[:id])
-  end
-
   # GET /blogs/new
   def new
     @blog = Blog.new
