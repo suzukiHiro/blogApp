@@ -1,0 +1,17 @@
+sample1:
+  id: 1
+  body: 一回目のコメント
+  status: unapproved
+  entry_id: 1
+
+sample2:
+  id: 2
+  body: ２回目のコメント
+  status: approved
+  entry_id: 1
+
+sample3:
+  id: 3
+  body: ３回目のコメント
+  status: approved
+  entry_id: 2

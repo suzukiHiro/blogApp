@@ -61,6 +61,13 @@ class BlogsController < ApplicationController
     end
   end
 
+  # send mail
+  def send_mail
+    mail_address = "herohero0130@gmail.com"
+    @mail = NoticeMailer.sendmail_confirm(mail_address).deliver
+    render :text => "送信できた！"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog

@@ -1,0 +1,17 @@
+sample1:
+  id: 1
+  title: 初めてのエントリー
+  body: はじめまして！
+  blog_id: 1
+
+sample2:
+  id: 2
+  title: ２回目のエントリー
+  body: どーも！
+  blog_id: 1
+
+sample3:
+  id: 3
+  title: ３回目のエントリー
+  body: こんちは！
+  blog_id: 2

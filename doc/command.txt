@@ -13,3 +13,7 @@ rake db:migrate
 
 ◯ Load Fixture
 rake db:fixtures:load
+
+◯ メール送信
+> rails console
+> NoticeMailer.sendmail_confirm("suzuki.h.0130@gmail.com").deliver

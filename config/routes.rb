@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :blogs do
+    collection do
+      get :send_mail
+    end
     resources :entries, :except => [:index]
   end
 

@@ -38,9 +38,14 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'rspec-rails'
+group :test do
+  gem "rspec"
+  gem "rspec-rails"
+  gem 'capybara'  
+end
 
 group :development do
   gem 'hirb'
   gem 'hirb-unicode'
+  gem "letter_opener", "~> 1.1.0"
 end
